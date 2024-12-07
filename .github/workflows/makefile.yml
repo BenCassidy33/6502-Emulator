@@ -18,3 +18,5 @@ jobs:
       run: make run
     - name: format-check
       run: make format-check
+    - name: run tests
+      run: make test
