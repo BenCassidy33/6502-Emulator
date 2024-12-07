@@ -1,5 +1,5 @@
 CC = clang
-CFLAGS = -std=c23 -Wall -Wextra
+CFLAGS = -Wall -Wextra
 LDFLAGS = -lcmocka
 FORMATTER = clang-format
 
@@ -8,10 +8,12 @@ OBJS = $(SRCS:src/%.c=build/%.o)
 
 TARGET = build/target
 
+INPUT = test_program.asm
+
 all: $(TARGET)
 
 run: $(TARGET)
-	$(TARGET)
+	$(TARGET) $(INPUT)
 
 test: $(TARGET)
 	$(TARGET) --test
