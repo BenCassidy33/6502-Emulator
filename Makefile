@@ -3,3 +3,6 @@ all:
 
 run: all
 	build/main
+
+format-check:
+	clang-format --dry-run --Werror $(shell find . -name '*.c' -or -name '*.h')
