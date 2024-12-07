@@ -1,6 +1,6 @@
 #ifndef CPU_EMULATOR_H
 #define CPU_EMULATOR_H
-#include <algorithm>
+
 #include <stdint.h>
 
 typedef uint8_t byte;  // 8 bits or 1 byte
