@@ -1,21 +1,27 @@
-name: format
+name: Clang Format Check
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    paths:
+      - '**/*.c'
+      - '**/*.h'
+  push:
+    paths:
+      - '**/*.c'
+      - '**/*.h'
 
-jobs: 
-  build:
+jobs:
+  clang-format:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: clang format
-      run: | 
-        clang-format -i -style=file *.c *.h
-        if [ $? -ne 0 ]; then
-          exit 1
-        fi
-}
+      - name: Set up Clang Format
+        uses: matthewfeickert/clang-format-action@v2
+        with:
+          clang_format_version: 'latest'
+
+      - name: Run clang-format
+        run: |
+          clang-format --dry-run --Werror $(find . -name '*.c' -or -name '*.h')
