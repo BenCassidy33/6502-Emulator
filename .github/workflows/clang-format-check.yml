@@ -1,0 +1,21 @@
+name: format
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: clang format
+      run: | 
+        clang-format -i -style=file *.c *.h
+        if [ $? -ne 0 ]; then
+          exit 1
+        fi
+}
