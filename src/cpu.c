@@ -83,4 +83,5 @@ const Instruction INSTRUCTION_SET[] = {
     {BRK, "BRK", {Break}},
     {NOP, "NOP", {}},
     {RTI, "RTI", {Zero, Carry, Interrupt, Decimal, Break, Overflow, Negative}},
-    {NULL, 0, {}}};
+
+    {ENDSET, 0, {}}};

@@ -130,7 +130,7 @@ typedef enum {
 	NOP,
 	RTI, // Sets All
 
-	NULL
+	ENDSET
 } Instruction_Ident;
 
 typedef struct {
@@ -138,5 +138,10 @@ typedef struct {
 	const char *string_name;
 	Status set_flags[MAX_FLAGS];
 } Instruction;
+
+typedef struct {
+	Instruction instruction;
+	void *value; // TODO: Find a better type for this.
+} InstructionLine;
 
 extern const Instruction INSTRUCTION_SET[]; // Declare as extern
