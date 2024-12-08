@@ -128,7 +128,9 @@ typedef enum {
 	// System Functions
 	BRK, // Sets B
 	NOP,
-	RTI // Sets All
+	RTI, // Sets All
+
+	NULL
 } Instruction_Ident;
 
 typedef struct {

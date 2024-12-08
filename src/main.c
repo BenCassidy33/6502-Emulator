@@ -21,9 +21,7 @@ char *get_program_file(int argc, char **argv) {
 }
 
 char *read_file(char *filename) {
-
 	char *filepath = realpath(filename, NULL);
-	/*printf("\nRunning File: %s\n", filepath);*/
 
 	FILE *fptr = fopen(filepath, "r");
 
@@ -39,11 +37,9 @@ char *read_file(char *filename) {
 	char *buffer = malloc(filesize + 1);
 
 	if (buffer == NULL) {
-		/*printf("Memory allocation failed. Exiting\n");*/
 		exit(1);
 	}
 
-	/*printf("Read: %ld bytes from file\n", filesize);*/
 	fread(buffer, 1, filesize, fptr);
 	fclose(fptr);
 
@@ -51,11 +47,9 @@ char *read_file(char *filename) {
 }
 
 int main(int argc, char **argv) {
-	/*printf("ARGC: %d\n", argc);*/
-
-	for (int i = 0; i < argc; i++) {
-		/*printf("argv[%d]: %s\n", i, argv[i]);*/
-	}
+	/*for (int i = 0; i < argc; i++) {*/
+	/*printf("argv[%d]: %s\n", i, argv[i]);*/
+	/*}*/
 
 	if (argc > 1 && strcmp(argv[1], "--test") == 0) {
 		printf("\n\n==========Running Tests==========\n\n\n");
