@@ -33,36 +33,44 @@ void parse_file(char *file) {
 
 			program_sections[section_count++] = tmp;
 		};
-	}
 
-	while ((word = strsep(&line, " "))) {
-		if (strcmp(word, "") == 0) {
-			continue;
-		}
+		while ((word = strsep(&line, " "))) {
+			if (strcmp(word, "") == 0) {
+				continue;
+			}
 
-		for (int i = 0; INSTRUCTION_SET[i].ident != ENDSET; i++) {
-			if (strcmp(word, INSTRUCTION_SET[i].string_name) == 0) {
+			for (int i = 0; INSTRUCTION_SET[i].ident != ENDSET;
+			     i++) {
+				if (strcmp(word,
+				           INSTRUCTION_SET[i].string_name) ==
+				    0) {
 
-				program_instructions =
-				    realloc(program_instructions,
-				            (instruction_count + 1) *
-				                sizeof(Instruction));
+					program_instructions =
+					    realloc(program_instructions,
+					            (instruction_count + 1) *
+					                sizeof(Instruction));
 
-				if (!program_instructions) {
-					exit(EXIT_FAILURE);
-				}
+					if (!program_instructions) {
+						exit(EXIT_FAILURE);
+					}
 
-				program_instructions[instruction_count++] =
-				    INSTRUCTION_SET[i];
+					program_instructions
+					    [instruction_count++] =
+					        INSTRUCTION_SET[i];
 
-				break;
-			};
+					break;
+				};
+			}
 		}
 	}
 
 	for (int i = 0; i < section_count; i++) {
 		printf("%d: %s\n", program_sections[i].line_start,
 		       program_sections[i].string_name);
+	}
+
+	for (int i = 0; i < instruction_count; i++) {
+		printf("%s\n", program_instructions[i].string_name);
 	}
 
 	free(program_instructions);
