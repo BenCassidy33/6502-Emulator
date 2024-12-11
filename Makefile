@@ -3,8 +3,8 @@ CFLAGS = -Wall -Wextra
 LDFLAGS = -lcmocka
 FORMATTER = clang-format
 
-SRCS = $(shell find src/ -name '*.c')
-OBJS = $(SRCS:src/%.c=build/%.o)
+SRCS = $(shell find core/ -name '*.c')
+OBJS = $(SRCS:core/%.c=build/%.o)
 
 TARGET = build/target
 
@@ -21,7 +21,7 @@ test: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $(TARGET) $(LDFLAGS)
 
-build/%.o: src/%.c
+build/%.o: core/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

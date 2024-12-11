@@ -1,6 +1,7 @@
 #include "cpu.h"
 #include "parser.h"
 #include "tests.h"
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -145,3 +145,8 @@ typedef struct {
 } InstructionLine;
 
 extern const Instruction INSTRUCTION_SET[]; // Declare as extern
+
+typedef struct {
+	unsigned int line_start;
+	const char *string_name;
+} Section;
